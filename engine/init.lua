@@ -46,7 +46,7 @@ end
 function engine_run(config)
   if not web then
     love.filesystem.setIdentity(config.game_name)
-    steam.init()
+    --steam.init()
     system.load_state()
 
     local _, _, flags = love.window.getMode()
@@ -122,7 +122,7 @@ function engine_run(config)
         if name == "quit" then
           if not love.quit or not love.quit() then
             system.save_state()
-            steam.shutdown()
+            --steam.shutdown()
             return a or 0
           end
         elseif name == "keypressed" then input.keyboard_state[a] = true; input.last_key_pressed = a
@@ -139,7 +139,7 @@ function engine_run(config)
 
     if love.timer then dt = love.timer.step() end
 
-    steam.runCallbacks()
+    --steam.runCallbacks()
     accumulator = accumulator + dt
     while accumulator >= fixed_dt do
       frame = frame + 1
